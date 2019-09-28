@@ -2,6 +2,8 @@
 using Prism.DryIoc;
 using Prism.Ioc;
 using Xamarin.Forms;
+using XplatCollect.Models;
+using XplatCollect.Services;
 using XplatCollect.ViewModels;
 using XplatCollect.Views;
 
@@ -32,6 +34,10 @@ namespace XplatCollect
             containerRegistry.RegisterForNavigation<ProfilePage>();
             containerRegistry.RegisterForNavigation<NewCollectionPage>();
             containerRegistry.RegisterForNavigation<CollectionPage>();
+
+            containerRegistry.Register<IDataBaseService<Collection>, DataBaseService<Collection>>();
+            containerRegistry.Register<IDataBaseService<Person>, DataBaseService<Person>>();
+            containerRegistry.Register<IPersonService, PersonService>();
         }
 
         protected override async void OnInitialized()
